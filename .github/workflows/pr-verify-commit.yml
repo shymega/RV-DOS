@@ -1,0 +1,17 @@
+# SPDX-FileCopyrightText: 2025 Dom Rodriguez <shymega@shymega.org.uk>
+#
+# SPDX-License-Identifier: GPL-3.0-only
+
+name: Conventional Commits
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-commit-messages:
+    name: Test commit message(s)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: webiny/action-conventional-commits@v1.3.0
