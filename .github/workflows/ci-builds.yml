@@ -6,7 +6,24 @@
 name: Nix packaging tests
 
 on:
-  workflow_call:
+  push:
+    paths:
+      - 'flake.nix'
+      - 'default.nix'
+      - 'shell.nix'
+      - '.github/workflows/ci-builds.yml'
+      - 'src/**'
+      - 'packages/**'
+      - 'devshell.nix'
+  pull_request:
+    paths:
+      - 'flake.nix'
+      - 'default.nix'
+      - 'shell.nix'
+      - '.github/workflows/ci-builds.yml'
+      - 'src/**'
+      - 'packages/**'
+      - 'devshell.nix'
 
 jobs:
   check-flake:
