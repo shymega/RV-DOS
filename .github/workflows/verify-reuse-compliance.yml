@@ -5,11 +5,8 @@
 name: REUSE Compliance Check
 
 on:
-  - push
-  - pull_request
-
-permissions:
-  contents: read
+  push:
+  pull_request:
 
 jobs:
   reuse-compliance-check:
