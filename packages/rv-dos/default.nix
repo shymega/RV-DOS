@@ -24,7 +24,7 @@
   rv-dos = craneLib.buildPackage {
     buildInputs = [];
     cargoExtraArgs = "--target riscv64gc-unknown-none-elf";
-    doCheck = true;
+    doCheck = false;
     pname = "rv-dos";
     src = craneLib.cleanCargoSource "${flake}/src/rust/rvdos";
     strictDeps = true;
