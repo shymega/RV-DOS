@@ -5,7 +5,7 @@
   description = "A Nix flake for the RV-DOS project; a Rust-based OS for RISC-V, inspired by DOS.";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-25.05";
     devenv = {
       url = "github:cachix/devenv";
       inputs.nixpkgs.follows = "nixpkgs";

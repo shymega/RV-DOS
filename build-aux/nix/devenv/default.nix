@@ -2,19 +2,24 @@
 #
 # SPDX-License-Identifier: GPL-3.0-only
 {pkgs, ...}: {
-  packages = [pkgs.git];
+  env.LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib/";
+  packages = with pkgs; [
+    buildbox
+    buildstream
+    lzip
+    perl
+    python3Packages.dulwich
+    python3Packages.packaging
+    python3Packages.pip
+    python3Packages.requests
+    python3Packages.tomlkit
+    python3Packages.tox
+  ];
 
   languages = {
+    nix.enable = true;
     rust.enable = true;
     shell.enable = true;
-    nix.enable = true;
-  };
-
-  services.postgres = {
-    enable = true;
-    package = pkgs.postgresql;
-    listen_addresses = "127.0.0.1";
-    initialDatabases = [{name = "orthros_db";}];
   };
 
   devcontainer.enable = true;

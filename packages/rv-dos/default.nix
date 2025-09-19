@@ -1,12 +1,12 @@
 # SPDX-FileCopyrightText: 2025 Dom Rodriguez <shymega@shymega.org.uk>
 #
 # SPDX-License-Identifier: GPL-3.0-only
-{
-  inputs,
-  flake,
-  pkgs,
-  ...
-}: let
+{ inputs
+, flake
+, pkgs
+, ...
+}:
+let
   inherit (inputs) crane;
   inherit (pkgs) lib;
 
@@ -16,13 +16,13 @@
   # our specific toolchain there.
   craneLib = (crane.mkLib pkgs).overrideToolchain (
     p:
-      p.rust-bin.stable.latest.default.override {
-        targets = ["riscv64gc-unknown-none-elf"];
-      }
+    p.rust-bin.stable.latest.default.override {
+      targets = [ "riscv64gc-unknown-none-elf" ];
+    }
   );
 
   rv-dos = craneLib.buildPackage {
-    buildInputs = [];
+    buildInputs = [ ];
     cargoExtraArgs = "--target riscv64gc-unknown-none-elf";
     doCheck = false;
     pname = "rv-dos";
@@ -31,4 +31,4 @@
     version = "0.1.0";
   };
 in
-  rv-dos
+rv-dos
